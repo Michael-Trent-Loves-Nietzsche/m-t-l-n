@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Index</title>
+  </head>
+  <body>
+    <h1>What's Your Car's Fuel Consumption?</h1>
+    <p>To work out your car's fuel consumption in miles per gallon:</p>
+    <p>
+      1. Reset you car's trip button for the odometer (distance-meter) when you
+      next fill up your car
+    </p>
+    <p>2. Check the reading on the odometer next time you fill your car up</p>
+    <p>3. Find out how much fuel you added to your car in litres</p>
+    <p>4. Input the values into this webpage</p>
+
+    <button onclick="myFunction1()">How many miles have you travelled?</button>
+    <button onclick="myFunction2()">
+      How many litres did you add to you car
+    </button>
+
+    <p id="demo"></p>
+
+    <script>
+      function myFunction1() {
+        let milesTravelled = prompt(
+          "Please enter the distance travelled in your car in miles.",
+          "100"
+        );
+
+        if (milesTravelled != null) kmTravelled = milesTravelled * 1.609;
+
+        let litresUsed = prompt(
+          "How many litres of fuel did you add to you car?",
+          "10"
+        );
+
+        if (litresUsed != null) gallonsUsed = litresUsed * 0.22;
+        milesPerGallon = milesTravelled / gallonsUsed;
+        {
+          document.getElementById("demo").innerHTML =
+            "Your fuel consumption is " +
+            Math.round(milesPerGallon) +
+            " miles per gallon";
+        }
+      }
+    </script>
+    <a href="index.html">Home</a>
+  </body>
+</html>
