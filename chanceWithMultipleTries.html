@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Index</title>
+  </head>
+  <body>
+    <h1>What's The Probility Of Event With Multiple Tries?</h1>
+    <p>
+      For example, the chance of rolling a 6 one a D6 is 0.167 so if you roll 4
+      times the chance of rolling at least one 6 is 51.8%.
+    </p>
+    <p>
+      Or a coin has a 50:50 chance of landing a head and with 3 tosses there's
+      an 87.5% chance of getting a head
+    </p>
+
+    <button onclick="myFunction1()">
+      What's the probability with each try?
+    </button>
+    <button onclick="myFunction2()">How many times will you try?</button>
+
+    <p id="demo"></p>
+
+    <script>
+      function myFunction1() {
+        let oneTimeProbability = prompt(
+          "Please enter the probability in each instance?",
+          "0.5"
+        );
+
+        let numberOfTries = prompt("How many times will you repeat?", "10");
+
+        if (oneTimeProbability != null)
+          probability = (1 - (1 - oneTimeProbability) ** numberOfTries) * 100;
+
+        document.getElementById("demo").innerHTML =
+          "The probability is  " + probability.toFixed(2) + " %";
+      }
+    </script>
+    <a href="index.html">Home</a>
+  </body>
+</html>
