@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Number of Tries</title>
+  </head>
+  <body>
+    <h1>
+      How many times do you have to repeat an event to be likely to get the
+      outcome you want?
+    </h1>
+    <p>
+      For example, if there's a 1 in 36 chance of rolling a double six on two
+      fair dice and you want to be 95% sure of getting that outcome you have to
+      roll the dice 107 times.
+    </p>
+    <p>
+      But if you only wanted to be 70% sure of getting double six you'd only
+      need to roll the dice 43 times.
+    </p>
+
+    <button onclick="myFunction1()">
+      What's the probability with each try?
+    </button>
+    <button onclick="myFunction2()">How certain do you want to be?</button>
+
+    <p id="demo"></p>
+
+    <script>
+      function myFunction1() {
+        let oneTimeProbability = prompt(
+          "Please enter the probability in each instance?",
+          "0.5"
+        );
+
+        let howCertain = prompt("How certain do you want to be?", "0.95");
+
+        if (oneTimeProbability != null)
+          numberOfTries =
+            Math.log(1 - howCertain) / Math.log(1 - oneTimeProbability);
+
+        document.getElementById("demo").innerHTML =
+          "You need to repeat this  " +
+          numberOfTries.toFixed(0) +
+          " times to be " +
+          howCertain * 100 +
+          "% sure of achieving your goal!";
+      }
+    </script>
+    <a href="index.html">Home</a>
+  </body>
+</html>
