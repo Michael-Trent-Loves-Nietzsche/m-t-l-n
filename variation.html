@@ -18,10 +18,10 @@
       What's the probability of winning with each bet?
     </button>
     <button onclick="myFunction2()">
-      What is the stake with each bet in GBP?
+      What is the stake with each bet in $?
     </button>
     <button onclick="myFunction3()">
-      How much do you get if you win the bet in GBP (including the initial
+      How much do you get if you win the bet in $P (including the initial
       stake)?
     </button>
     <button onclick="myFunction4()">How many bets will you make?</button>
@@ -35,32 +35,38 @@
           "0.45"
         );
 
-        let stake = prompt("What is the stake with each bet in GBP?", "1");
+        let stake = prompt("What is the stake with each bet in $?", "1");
 
         let winning = prompt(
-          "How much do you get if you win the bet in GBP (including the initial stake)",
+          "How much do you get if you win the bet in $ (including the initial stake)",
           "2"
         );
 
         let numberBets = prompt("How many bets will you make?", "100");
 
         averageReturn = (winning - stake) * chance + (1 - chance) * -stake;
-        squaredDistanceA = (1 - averageReturn) ** 2;
-        let squaredDistanceB = (-1 - averageReturn) ** 2;
+        averageReturnTotal = averageReturn * numberBets;
+        squaredDistanceA = (winning - stake - averageReturn) ** 2;
+        let squaredDistanceB = (-stake - averageReturn) ** 2;
         averageSquaredDistance =
           chance * squaredDistanceA + (1 - chance) * squaredDistanceB;
         stdDev = averageSquaredDistance ** 0.5;
-        variance = (1.96 * stdDev) / numberBets ** 0.5;
+        sqrtNumberBets = numberBets ** 0.5;
+        variance = (1.96 * stdDev) / sqrtNumberBets;
 
         if (chance != null)
           document.getElementById("demo").innerHTML =
             "On average you will win " +
             averageReturn.toFixed(4) +
-            " GBP But 95% of the time your winnings will be between " +
-            (averageReturn - variance).toFixed(2) +
-            "GBP and " +
-            (averageReturn + variance).toFixed(2) +
-            "GBP";
+            " $ But 95% of the time with " +
+            numberBets +
+            " bets, your winnings will be between " +
+            (averageReturnTotal - variance).toFixed(2) +
+            " $ and " +
+            (averageReturnTotal + variance).toFixed(2) +
+            " $. (The variance is +/-" +
+            variance.toFixed(2) +
+            " $.)";
       }
     </script>
     <a href="index.html">Home</a>
