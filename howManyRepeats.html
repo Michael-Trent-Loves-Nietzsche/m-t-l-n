@@ -43,7 +43,7 @@
 
         document.getElementById("demo").innerHTML =
           "You need to repeat this  " +
-          numberOfTries.toFixed(0) +
+          Math.ceil(numberOfTries) +
           " times to be " +
           howCertain * 100 +
           "% sure of achieving your goal!";
