@@ -21,8 +21,7 @@
       What is the stake with each bet in $?
     </button>
     <button onclick="myFunction3()">
-      How much do you get if you win the bet in $P (including the initial
-      stake)?
+      How much do you get if you win the bet (including the initial stake)?
     </button>
     <button onclick="myFunction4()">How many bets will you make?</button>
 
@@ -38,7 +37,7 @@
         let stake = prompt("What is the stake with each bet in $?", "1");
 
         let winning = prompt(
-          "How much do you get if you win the bet in $ (including the initial stake)",
+          "How much do you get if you win the bet (including the initial stake)",
           "2"
         );
 
@@ -46,8 +45,10 @@
 
         averageReturn = (winning - stake) * chance + (1 - chance) * -stake;
         averageReturnTotal = averageReturn * numberBets;
-        squaredDistanceA = (winning - stake - averageReturn) ** 2;
-        let squaredDistanceB = (-stake - averageReturn) ** 2;
+        squaredDistanceA =
+          ((winning - stake) * numberBets - averageReturn * numberBets) ** 2;
+        let squaredDistanceB =
+          (-(stake * numberBets) - averageReturn * numberBets) ** 2;
         averageSquaredDistance =
           chance * squaredDistanceA + (1 - chance) * squaredDistanceB;
         stdDev = averageSquaredDistance ** 0.5;
@@ -57,16 +58,16 @@
         if (chance != null)
           document.getElementById("demo").innerHTML =
             "On average you will win " +
-            averageReturn.toFixed(4) +
-            " $ But 95% of the time with " +
+            (averageReturn * numberBets).toFixed(2) +
+            " $ but 95% of the time with " +
             numberBets +
             " bets, your winnings will be between " +
             (averageReturnTotal - variance).toFixed(2) +
             " $ and " +
             (averageReturnTotal + variance).toFixed(2) +
-            " $. (The variance is +/-" +
-            variance.toFixed(2) +
-            " $.)";
+            " $. The average win per bet is " +
+            averageReturn.toFixed(4) +
+            " $.";
       }
     </script>
     <a href="index.html">Home</a>
