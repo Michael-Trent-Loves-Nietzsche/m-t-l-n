@@ -31,17 +31,17 @@
       function myFunction1() {
         let chance = prompt(
           "What's the probability of winning with each bet?",
-          "0.45"
+          "0.488"
         );
 
         let stake = prompt("What is the stake with each bet in $?", "1");
 
         let winning = prompt(
-          "How much do you get if you win the bet (including the initial stake)",
+          "How much do you win? (including the initial stake)",
           "2"
         );
 
-        let numberBets = prompt("How many bets will you make?", "100");
+        let numberBets = prompt("How many bets will you make?", "10000");
 
         averageReturn = (winning - stake) * chance + (1 - chance) * -stake;
         averageReturnTotal = averageReturn * numberBets;
