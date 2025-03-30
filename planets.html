@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tester Model Planet Distance Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+      }
+      .input-box {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+      }
+      button {
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      .result {
+        font-size: 1.2em;
+        margin-top: 20px;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Tester Model Orbit Distance Calculator</h1>
+      <label for="a">How far is planet A from the centre (distance):</label>
+      <input type="number" id="a" class="input-box" placeholder="distance a" />
+
+      <label for="b">How long does planet A take to orbit (time):</label>
+      <input type="number" id="b" class="input-box" placeholder="orbit a" />
+
+      <label for="c">How far is planet B from the centre (distance):</label>
+      <input type="number" id="c" class="input-box" placeholder="distance b" />
+
+      <label for="d">How long does planet B take to orbit (time):</label>
+      <input type="number" id="d" class="input-box" placeholder="orbit b" />
+
+      <label for="e">How long have they been orbiting (time):</label>
+      <input
+        type="number"
+        id="e"
+        class="input-box"
+        placeholder="time orbiting"
+      />
+
+      <button onclick="solveEquation()">Solve Equation</button>
+
+      <div id="result" class="result"></div>
+    </div>
+
+    <script>
+      function solveEquation() {
+        // Get values from input fields
+        var a = parseFloat(document.getElementById("a").value);
+        var b = parseFloat(document.getElementById("b").value);
+        var c = parseFloat(document.getElementById("c").value);
+        var d = parseFloat(document.getElementById("d").value);
+        var e = parseFloat(document.getElementById("e").value);
+
+        // Check if all inputs are filled
+        if (isNaN(a) || isNaN(b) || isNaN(c) || isNaN(d) || isNaN(e)) {
+          document.getElementById("result").innerText =
+            "Please enter valid numbers in all fields.";
+          return;
+        }
+
+        // Calculate the result of the equation (example: a * b + c)
+        var xdistance =
+          a * Math.cos((6.283185 * e) / b) - c * Math.cos((6.283185 * e) / d);
+        var ydistance =
+          a * Math.sin((6.283185 * e) / b) - c * Math.sin((6.283185 * e) / d);
+        var sqrdistance = xdistance ** 2 + ydistance ** 2;
+        var result = sqrdistance ** 0.5;
+
+        // Display the result
+        document.getElementById("result").innerText =
+          "Result: " + result.toFixed(2) + " distance units";
+      }
+    </script>
+  </body>
+</html>
